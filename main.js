@@ -1,18 +1,19 @@
 "use strict";
 
-function plus(a, b) {
-  let sum = a + b;
-  if (sum % 2 == 0) {
-    console.log("Сумма чисел четное число");
-  } else {
-    console.log("Сумма чисел не четное число");
-  }
-}
+const person = "Azimov Rustam Asqar o'gli";
+const college = "Tashkent Pro IT College";
+const age = 18.8;
+const length = "182.6cm";
+const mass = "62.3kg";
 
-plus(10, 6);
+const personName = person.slice(7, 13);
+const personSurname = person.slice(0, 6);
+const personFatherName = person.substring(14);
 
-function calc(a, b) {
-  return a + b;
-}
-
-console.log(calc(4, 5));
+console.log(personName);
+console.log(personSurname);
+console.log(personFatherName);
+console.log(college.substr(0, 8));
+console.log(Math.round(age));
+console.log(parseInt(length));
+console.log(parseFloat(mass));
