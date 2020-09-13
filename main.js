@@ -1,43 +1,36 @@
 "use strict";
 
-const options = {
-  name: "test",
-  width: 1024,
-  height: 1024,
-  colors: {
-    border: "gold",
-    bg: "red",
-  },
-  logAuthor: function () {
-    console.log('Rustam');
-  },
-};
+const arr = [1, 32, 24, 7, 19];
+arr.sort(compareNum);
+console.log(arr);
 
-options.logAuthor();
+function compareNum(a, b) {
+  return a - b;
+}
 
-const {
-  border,
-  bg
-} = options.colors;
-console.log(bg);
-// console.log(Object.keys(options).length);  Получить длину объекта 
+// arr.pop();  Удаляет последний элемент массива
 
-// delete options.width;   Удалить свойство у объекта
+// arr.push(10); Добавляет элемент в конец массива
 
-// console.log(options);
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// } Перебор элементов массива
 
-// Далее идет перебор объекта и счетчик для него выше длина объекта получается более рациональным путем
-// let counter = 0;
-// for (let key in options) {
-//   if (typeof (options[key]) === 'object') {
-//     for (let i in options[key]) {
-//       console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-//       counter++;
-//     }
-//   } else {
-//     console.log(`Свойство ${key} имеет значение ${options[key]}`);
-//     counter++;
-//   }
-// }
+// for (let value of arr) {
+//   console.log(value);
+// }  Короткий способ перебора массива назывется for of
+// console.log(arr);
 
-// console.log(counter);
+// arr[99] = 0;
+// console.log(arr.length); метод length берет индекс последнего элемента +1, т.к. логика массива в том что элементы лежат по порядку и без пустоты между ними.
+
+// arr.forEach(function (item, i, arr) {
+//   console.log(`${i}: ${item} внутри массива ${arr}`);
+// });  Метод перебора
+
+// const str = prompt("", "");
+// const products = str.split(", ");
+// console.log(products);
+
+// const guests = ["Эшмат", "Тошмат", "Гайбулло", "Жуманазар"];
+// console.log(guests.join("; "));
