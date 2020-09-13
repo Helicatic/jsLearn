@@ -1,36 +1,92 @@
 "use strict";
 
-const arr = [1, 32, 24, 7, 19];
-arr.sort(compareNum);
-console.log(arr);
+const obj = {
+  a: 5,
+  b: 1,
+};
 
-function compareNum(a, b) {
-  return a - b;
-}
+// const copy = obj; // Передаёт ссылку на объект
 
-// arr.pop();  Удаляет последний элемент массива
+// copy.a = 10;
 
-// arr.push(10); Добавляет элемент в конец массива
+// console.log(obj);
+// console.log(copy);
 
-// for (let i = 0; i < arr.length; i++) {
-//   console.log(arr[i]);
-// } Перебор элементов массива
+function copy(mainObj) {
+  let objCopy = {};
 
-// for (let value of arr) {
-//   console.log(value);
-// }  Короткий способ перебора массива назывется for of
-// console.log(arr);
+  let key;
+  for (key in mainObj) {
+    objCopy[key] = mainObj[key];
+  }
+  return objCopy;
+} // Функция для поверхностного копирования объекта
 
-// arr[99] = 0;
-// console.log(arr.length); метод length берет индекс последнего элемента +1, т.к. логика массива в том что элементы лежат по порядку и без пустоты между ними.
+// const numbers = {
+//   a: 5,
+//   b: 9,
+//   c: {
+//     x: 30,
+//     y: 15,
+//   },
+// };
 
-// arr.forEach(function (item, i, arr) {
-//   console.log(`${i}: ${item} внутри массива ${arr}`);
-// });  Метод перебора
+// const newNumbers = copy(numbers);
 
-// const str = prompt("", "");
-// const products = str.split(", ");
-// console.log(products);
+// newNumbers.b = 20;
+// // newNumbers.c.y = 90; Пример того что мы сделали поверхностную копия объекта
 
-// const guests = ["Эшмат", "Тошмат", "Гайбулло", "Жуманазар"];
-// console.log(guests.join("; "));
+// console.log(numbers);
+// console.log(newNumbers);
+
+// const add = {
+//   d: 35,
+//   e: 50,
+// };
+
+// console.log(Object.assign(numbers, add)); // слияние 2 объектов
+
+// const clone = Object.assign({}, add);
+
+// clone.d = 90;
+
+// console.log(add);
+// console.log(clone);
+
+// const oldArr = ["a", "b", "c"];
+// const newArr = oldArr.slice();
+
+// newArr[1] = "sladkfh";
+// console.log(oldArr);
+// console.log(newArr);
+
+// const video = ["youtube", "vimeo", "mover"],
+//   socials = ["instagram", "telegram", "vk"],
+//   internet = [...video, ...socials, "turon", "github"]; // ... это spread оператор который разворачивает массив и так можно объединять массивы
+
+// console.log(internet);
+
+// function log(a, b, c) {
+//   console.log(a);
+//   console.log(b);
+//   console.log(c);
+// }
+
+// const num = [2, 5, 9];
+
+// log(...num);
+
+// const array = ["a", "b"];
+
+// const newArray = [...array];
+
+// console.log(newArray);
+
+const q = {
+  one: 1,
+  two: 2,
+};
+
+const newQ = { ...q }; //  Spread оператор можно использовать также для объектов
+
+console.log(newQ);
