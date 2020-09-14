@@ -1,27 +1,112 @@
 "use strict";
 
-// let str = "akldsg";
+/* Задание на урок:
 
-// let strObj = new String(str);
+1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
 
-// console.log(typeof str);
-// console.log(typeof strObj);
+2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
 
-const soldier = {
-  health: 400,
-  armor: 200,
-  sayHello: function () {
-    console.log("Hello");
+3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+при помощи метода forEach вывести в консоль сообщения в таком виде:
+"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+
+const personalMoviesDB = {
+  count: 0,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: true,
+  start: function () {
+    personalMoviesDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+    while (personalMoviesDB.count == '' || personalMoviesDB.count == null || isNaN(personalMoviesDB.count)) {
+      personalMoviesDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
   },
-};
-const john = Object.create(soldier); // запись делает при создании объекта наследование прототипа от soldier
+  rememberMyFilms: function () {
+    for (let i = 0; i < 2; i++) {
+      const a = prompt('Один из просмотренных фильмов?', ''),
+        b = prompt('На сколько оцените его?', '');
+      if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+        personalMoviesDB.movies[a] = b;
+        console.log('done');
+      } else {
+        console.log('error');
+        i--;
+      }
+    }
+  },
+  detectPersonalLevel: function () {
+    if (personalMoviesDB.count < 10) {
+      console.log('Просмотренно довольно мало фильмов');
+    } else if (personalMoviesDB.count >= 10 && personalMoviesDB.count < 30) {
+      console.log('Вы классический зритель');
+    } else if (personalMoviesDB.count >= 30) {
+      console.log('Вы киноман!');
+    } else {
+      console.log('Произошла ошибка');
+    }
+  },
+  toggleVisibleMyDB: function () {
+    if (personalMoviesDB.privat) {
+      personalMoviesDB.privat = false;
+      console.log('Переключил privat на false');
+    } else {
+      personalMoviesDB.privat = true;
+      console.log('Переключил privat на true');
+    }
+  },
+  showMyDB: function (hidden) {
+    if (hidden) {
+      console.log(personalMoviesDB);
+    }
+  },
+  writeYourGenres: function () {
+    for (let i = 1; i <= 3; i++) {
+      let q = prompt(`Ваш любимый жанр под номером ${i}?`, '');
+      if (q == null || q === '') {
+        console.log('Вы ввели некоректные данные или не ввели их вовсе');
+        i--;
+      } else {
+        personalMoviesDB.genres[i - 1] = q;
+      }
+    }
 
-// const john = {
-//   health: 150,
-// };
+    personalMoviesDB.genres.forEach((item, i) => {
+      console.log(`Любимый жанр #${i + 1} - это ${item}`);
+    });
+  },
+  writeYourGenresTwo: function () {
+    for (let i = 1; i < 2; i++) {
+      let genres = prompt(`Введите ваши любимые жанры через запятую`).toLowerCase();
 
-// john.__proto__ = soldier; // Устаревший формат
-// Object.setPrototypeOf(john, soldier); // Новый формат идентичен записи на 22 строке
+      if (genres == null || genres === '') {
+        console.log('Вы ввели некоректные данные или не ввели их вовсе');
+        i--;
+      } else {
+        personalMoviesDB.genres = genres.split(', ');
+        personalMoviesDB.genres.sort();
+      }
+    }
 
-// console.log(john.armor);
-john.sayHello();
+    personalMoviesDB.genres.forEach((item, i) => {
+      console.log(`Любимый жанр #${i + 1} - это ${item}`);
+    });
+  },
+}
+
+personalMoviesDB.start();
+
+personalMoviesDB.rememberMyFilms();
+
+personalMoviesDB.detectPersonalLevel();
+
+personalMoviesDB.writeYourGenresTwo();
+
+personalMoviesDB.toggleVisibleMyDB();
+
+personalMoviesDB.showMyDB(personalMoviesDB.privat);
