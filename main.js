@@ -1,51 +1,37 @@
 "use strict";
 
-// To String
+// let x = 5;
+// alert(x++);
 
-// 1
+// console.log([] + false - null + true);  NaN
 
-const num = 555;
+// let y = 1;
+// let x = (y = 2);
+// alert(x);
 
-console.log(typeof String(num));
+// console.log([] + 1 + 2);
 
-// 2
+// alert("1"[0]);
 
-console.log(typeof (100 + ""));
+// console.log(2 && 1 && null && 0 && undefined); && запинается на лжи и возвращает его
 
-// To number
+// console.log(!!(1 && 2) == (1 && 2));
 
-// 1
+// alert(null || (2 && 3) || 4);
+// ИЛИ запинается на правде
+// И запинается на лжи
 
-const size = "14";
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
 
-console.log(typeof Number(size));
+// console.log(a == b);
+//false
 
-// 2
+// alert(+"Infinity");
+// выведет Infinity и тип данных number
 
-console.log(typeof +size);
+// console.log("Ёжик" > "яблоко");
+//посмотреть юникод и узнать на какой позиции находятся буквы. Ё = 0401; я = 044F. здесь 'я' больше 'Ё' поэтому будет false
 
-// 3
-
-console.log(typeof parseInt("15px", 10));
-
-// to Boolean
-
-// 0, '', null, undefined, NaN; Всегда будет false
-
-// 1
-
-let switcher = null;
-
-if (switcher) {
-  console.log("Working...");
-} else {
-  console.log("Not working.");
-}
-
-// 2
-
-console.log(typeof Boolean("4"));
-
-// 3
-
-console.log(typeof !!"239hbnsd");
+console.log(0 || "" || 2 || undefined || true || falsе);
+// или запнулось на правде это 2
