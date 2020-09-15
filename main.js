@@ -1,112 +1,51 @@
 "use strict";
 
-/* Задание на урок:
+// To String
 
-1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
-перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
-Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+// 1
 
-2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
-переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+const num = 555;
 
-3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
-Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
-при помощи метода forEach вывести в консоль сообщения в таком виде:
-"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+console.log(typeof String(num));
 
-const personalMoviesDB = {
-  count: 0,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: true,
-  start: function () {
-    personalMoviesDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+// 2
 
-    while (personalMoviesDB.count == '' || personalMoviesDB.count == null || isNaN(personalMoviesDB.count)) {
-      personalMoviesDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    }
-  },
-  rememberMyFilms: function () {
-    for (let i = 0; i < 2; i++) {
-      const a = prompt('Один из просмотренных фильмов?', ''),
-        b = prompt('На сколько оцените его?', '');
-      if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-        personalMoviesDB.movies[a] = b;
-        console.log('done');
-      } else {
-        console.log('error');
-        i--;
-      }
-    }
-  },
-  detectPersonalLevel: function () {
-    if (personalMoviesDB.count < 10) {
-      console.log('Просмотренно довольно мало фильмов');
-    } else if (personalMoviesDB.count >= 10 && personalMoviesDB.count < 30) {
-      console.log('Вы классический зритель');
-    } else if (personalMoviesDB.count >= 30) {
-      console.log('Вы киноман!');
-    } else {
-      console.log('Произошла ошибка');
-    }
-  },
-  toggleVisibleMyDB: function () {
-    if (personalMoviesDB.privat) {
-      personalMoviesDB.privat = false;
-      console.log('Переключил privat на false');
-    } else {
-      personalMoviesDB.privat = true;
-      console.log('Переключил privat на true');
-    }
-  },
-  showMyDB: function (hidden) {
-    if (hidden) {
-      console.log(personalMoviesDB);
-    }
-  },
-  writeYourGenres: function () {
-    for (let i = 1; i <= 3; i++) {
-      let q = prompt(`Ваш любимый жанр под номером ${i}?`, '');
-      if (q == null || q === '') {
-        console.log('Вы ввели некоректные данные или не ввели их вовсе');
-        i--;
-      } else {
-        personalMoviesDB.genres[i - 1] = q;
-      }
-    }
+console.log(typeof (100 + ""));
 
-    personalMoviesDB.genres.forEach((item, i) => {
-      console.log(`Любимый жанр #${i + 1} - это ${item}`);
-    });
-  },
-  writeYourGenresTwo: function () {
-    for (let i = 1; i < 2; i++) {
-      let genres = prompt(`Введите ваши любимые жанры через запятую`).toLowerCase();
+// To number
 
-      if (genres == null || genres === '') {
-        console.log('Вы ввели некоректные данные или не ввели их вовсе');
-        i--;
-      } else {
-        personalMoviesDB.genres = genres.split(', ');
-        personalMoviesDB.genres.sort();
-      }
-    }
+// 1
 
-    personalMoviesDB.genres.forEach((item, i) => {
-      console.log(`Любимый жанр #${i + 1} - это ${item}`);
-    });
-  },
+const size = "14";
+
+console.log(typeof Number(size));
+
+// 2
+
+console.log(typeof +size);
+
+// 3
+
+console.log(typeof parseInt("15px", 10));
+
+// to Boolean
+
+// 0, '', null, undefined, NaN; Всегда будет false
+
+// 1
+
+let switcher = null;
+
+if (switcher) {
+  console.log("Working...");
+} else {
+  console.log("Not working.");
 }
 
-personalMoviesDB.start();
+// 2
 
-personalMoviesDB.rememberMyFilms();
+console.log(typeof Boolean("4"));
 
-personalMoviesDB.detectPersonalLevel();
+// 3
 
-personalMoviesDB.writeYourGenresTwo();
-
-personalMoviesDB.toggleVisibleMyDB();
-
-personalMoviesDB.showMyDB(personalMoviesDB.privat);
+console.log(typeof !!"239hbnsd");
