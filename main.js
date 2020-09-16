@@ -1,37 +1,29 @@
 "use strict";
 
-// let x = 5;
-// alert(x++);
+const box = document.getElementById("box");
 
-// console.log([] + false - null + true);  NaN
+console.log(box);
 
-// let y = 1;
-// let x = (y = 2);
-// alert(x);
+const btns = document.getElementsByTagName("button");
+// создается псевдомассив всегда даже если 1 элемент
 
-// console.log([] + 1 + 2);
+console.log(btns[1]);
 
-// alert("1"[0]);
+const circles = document.getElementsByClassName("circle");
+// создается псевдомассив всегда даже если 1 элемент
 
-// console.log(2 && 1 && null && 0 && undefined); && запинается на лжи и возвращает его
+console.log(circles);
 
-// console.log(!!(1 && 2) == (1 && 2));
+// Новые методы
 
-// alert(null || (2 && 3) || 4);
-// ИЛИ запинается на правде
-// И запинается на лжи
+const hearts = document.querySelectorAll(".heart");
 
-// const a = [1, 2, 3];
-// const b = [1, 2, 3];
+console.log(hearts);
 
-// console.log(a == b);
-//false
+hearts.forEach((item) => {
+  console.log(item);
+});
 
-// alert(+"Infinity");
-// выведет Infinity и тип данных number
+const oneHeart = document.querySelector(".heart");
 
-// console.log("Ёжик" > "яблоко");
-//посмотреть юникод и узнать на какой позиции находятся буквы. Ё = 0401; я = 044F. здесь 'я' больше 'Ё' поэтому будет false
-
-console.log(0 || "" || 2 || undefined || true || falsе);
-// или запнулось на правде это 2
+console.log(oneHeart);
