@@ -1,29 +1,60 @@
 "use strict";
 
-const box = document.getElementById("box");
+const box = document.getElementById("box"),
+  btns = document.getElementsByTagName("button"),
+  circles = document.getElementsByClassName("circle"),
+  wrapper = document.querySelector(".wrapper"),
+  hearts = wrapper.querySelectorAll(".heart"),
+  oneHeart = wrapper.querySelector(".heart");
 
-console.log(box);
+// box.style.backgroundColor = "blue";
+// box.style.width = "500px";
 
-const btns = document.getElementsByTagName("button");
-// создается псевдомассив всегда даже если 1 элемент
+box.style.cssText = "background-color: blue; width: 500px; border-radius: 20px";
 
-console.log(btns[1]);
+btns[1].style.borderRadius = "100%";
 
-const circles = document.getElementsByClassName("circle");
-// создается псевдомассив всегда даже если 1 элемент
+circles[0].style.backgroundColor = "red";
 
-console.log(circles);
-
-// Новые методы
-
-const hearts = document.querySelectorAll(".heart");
-
-console.log(hearts);
+// for (let i = 0; i < hearts.length; i++) {
+//   hearts[i].style.backgroundColor = "green";
+// }
 
 hearts.forEach((item) => {
-  console.log(item);
+  item.style.backgroundColor = "green";
 });
 
-const oneHeart = document.querySelector(".heart");
+const div = document.createElement("div");
+// const text = document.createTextNode("Тут был я");
 
-console.log(oneHeart);
+div.classList.add("black");
+
+// document.querySelector(".wrapper").append(div);
+
+wrapper.append(div);
+
+// wrapper.prepend(div);
+
+// hearts[0].before(div);
+// hearts[0].after(div);
+
+// circles[0].remove();
+
+// hearts[0].replaceWith(circles[0]);
+
+// Устаревшие конструкции BEGIN
+
+// wrapper.appendChild(div); идентичен строке 34
+
+// wrapper.insertBefore(div, hearts[2]);
+
+// wrapper.removeChild(hearts[1]);
+
+// wrapper.replaceChild(circles[0], hearts[0]);
+
+// Устаревшие конструкции END
+
+div.innerHTML = "<h1>Hello</h1>";
+// div.textContent = "Hello";
+
+// div.insertAdjacentHTML("afterend", "<h2>Hello</h2>");
