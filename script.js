@@ -1,47 +1,23 @@
 'use strict';
 
-const btn = document.querySelector('#btn'),
-    overlay = document.querySelector('.overlay'),
-    btns = document.querySelectorAll('button');
+// console.log(document.documentElement);
+console.log(document.body.childNodes);
+// console.log(document.body.firstChild);
+// console.log(document.body.firstElementChild);
+// console.log(document.body.lastChild);
 
-// btn.onclick = function() {
-//     alert('Woow');
-// }; // Не надо использовать 
+// console.log(document.querySelector('#current').parentNode); Получение родителя
+// console.log(document.querySelector('#current').parentElement); Получение родительского элемента
+// console.log(document.querySelector('#current').parentNode.parentNode); Получение родителя родителя
 
-// btn.addEventListener('click', () => {
-//     alert('first click');
-// });
-// btn.addEventListener('click', () => {
-//     alert('second click');
-// });
+// console.log(document.querySelector('[data-current="3"]').nextSibling); Такой же как запись снизу но может получить просто перенос строки
+// console.log(document.querySelector('[data-current="3"]').nextElementSibling); Получение следющего элемента data
+// console.log(document.querySelector('[data-current="3"]').previousElementSibling); Получение предыдущего элемента data
 
+for (let node of document.body.childNodes) {
+    if (node.nodeName == '#text') {
+        continue;
+    }
 
-// btn.addEventListener('mouseenter', (event) => { // В callback функции события 1 аргумент всегда event
-//     // console.log('Hover');
-//     console.log(event.target);
-//     event.target.remove();
-// });
-
-let i = 0;
-const deleteElement = (event) => {
-    console.log(event.currentTarget);
-    console.log(event.type);
-    // event.target.remove();
-    // i++;
-    // if (i == 1) {
-    //     btn.removeEventListener('click', deleteElement);
-    // }
+    console.log(node);
 }
-// btn.addEventListener('click', deleteElement);
-// overlay.addEventListener('click', deleteElement);
-
-const link = document.querySelector('a');
-
-link.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(e.target);
-});
-
-btns.forEach(btn => {
-    btn.addEventListener('click', deleteElement, {once: true});   
-}) 
