@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // TIMER 
 
-  const deadline = '2020-09-29';
+  const deadline = '2020-10-12';
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -93,5 +93,61 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setClock('.timer', deadline);
+
+  // MODAL My Version
+
+  // const modalOpen = document.querySelectorAll('[data-modal]'),
+  //       modalClose = document.querySelector('[data-modal-close]'),
+  //       modal = document.querySelector('.modal');
+  
+  // modalOpen.forEach(item => {
+  //   item.addEventListener('click', () => {
+  //     modal.style.display = 'block';
+  //   })
+  // });
+
+  // modalClose.addEventListener('click', () => {
+  //   modal.style.display = 'none';
+  // })
+
+  // End MODAL My Version
+
+  // Modal Teacher Versin
+
+  const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-modal-close]');
+
+  modalTrigger.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.classList.remove('hide');
+      // modal.classList.toggle('show');
+      document.body.style.overflow = 'hidden';
+    })
+  });
+
+  function closeModal() {
+    modal.classList.add('hide');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  modalCloseBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape' && modal.classList.contains('show')) {
+      console.log('escape');
+      closeModal();
+    }
+  })
+
+  // End Modal Teacher Versin
 
 });
