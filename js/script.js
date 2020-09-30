@@ -1,28 +1,80 @@
 "use strict";
 
-// const num = new Number(5);
-// console.log(num);
+function showThis(a, b) {
+  console.log(this);
+  function sum() {
+    console.log(this);
+    return a + b;
+  }
+  console.log(sum());
+}
 
-function User(name, id) {
-  this.name = name;
-  this.id = id;
-  this.human = true;
-  this.hello = function() {
-    console.log(`Hello ${this.name}!`);
+// showThis(4, 5);
+
+const obj = {
+  a: 20,
+  b:15,
+  sum: function() {
+    function shout() {
+      console.log(this);
+    }
+    shout();
   }
 }
 
-User.prototype.exit = function() {
-  console.log(`Пользователь ${this.name} покинул чат)`);
-}
+// obj.sum();
 
-const ivan = new User('Ivan', 30);
-const arauz = new User('Arauz', 18);
+// function User(name, id) {
+//   this.name = name;
+//   this.id = id;
+//   this.human = true;
+// }
+// let arauz = new User('Arauz', 18);
 
-ivan.exit();
+// function sayName(surname) {
+//   console.log(this);
+//   console.log(this.name + ' ' + surname);
+// }
+// const user = {
+//   name: 'John'
+// }
 
-ivan.hello();
-arauz.hello();
+// sayName.call(user, 'Johnes');
+// sayName.apply(user, ['Jonathan']);
 
-console.log(ivan);
-console.log(arauz);
+// function count(num) {
+//   return this*num;
+// }
+
+// const double = count.bind(2);
+// console.log(double(3));
+// console.log(double(15));
+
+
+// 1) Обычная функция this будет равна window, но если будет стоять use strict то будет undefined
+// 2) Контекст у методов объекта будет сам объект
+// 3) this в конструкторах и классах это новый экземпляр объекта
+// 4) Ручная привязка this: call, apply, bind
+
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', function() {
+  // console.log(this);
+  this.style.backgroundColor = 'red';
+})
+
+const objects = {
+  num: 5,
+  sayNumber: function() {
+    const say = () => {
+      console.log(this.num);
+    };
+    say();
+  }
+};
+
+objects.sayNumber();
+
+const doubled = a => a * 2;
+
+console.log(doubled(5));
