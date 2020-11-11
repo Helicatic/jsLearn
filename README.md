@@ -1,2 +1,0 @@
-# jsLearn
-Hello World
