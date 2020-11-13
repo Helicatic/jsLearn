@@ -1,18 +1,8 @@
-"use strict";
+// import {one as first, two} from './main';
+import * as data from './main.js';
+import sayHi from './main.js'
 
-document.addEventListener("DOMContentLoaded", () => {
-    const tabs = require('./modules/tabs'),
-          modal = require('./modules/modal'),
-          timer = require('./modules/timer'),
-          cards = require('./modules/cards'),
-          forms = require('./modules/forms'),
-          slider = require('./modules/slider'),
-          calc = require('./modules/calc');
-    tabs();
-    modal();
-    timer();
-    cards();
-    forms();
-    slider();
-    calc();
-});
+// console.log(first);
+console.log(`${data.one} and ${data.two}`);
+sayHi();
+// data.sayHi();
