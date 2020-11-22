@@ -1,35 +1,27 @@
 {
-  "name": "jslearn",
+  "name": "food",
   "version": "1.0.0",
-  "description": "Hello World",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Helicatic/jsLearn.git"
-  },
   "author": "",
   "license": "ISC",
   "browserslist": [
-    "> 1%"
+    "> 1%",
+    "not dead"
   ],
-  "bugs": {
-    "url": "https://github.com/Helicatic/jsLearn/issues"
-  },
-  "homepage": "https://github.com/Helicatic/jsLearn#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "babel-loader": "^8.2.1",
-    "core-js": "^3.7.0",
-    "json-server": "^0.16.2"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "json-server": "^0.16.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "es6-promise": "^4.2.8",
-    "nodelist-foreach-polyfill": "^1.2.0"
+    "jquery": "^3.5.1"
   }
 }
